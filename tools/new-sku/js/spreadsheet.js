@@ -1568,7 +1568,7 @@
                         xhr.responseText;
                     //exampleConsole.innerHTML = JSON.stringify(hot.getData());
                     console.log('Response:');
-                    console.log(JSON.stringify(xhr))
+                   // console.log(JSON.stringify(xhr))
                     console.log('Data sent:');
                     console.log(myData);
                 }
