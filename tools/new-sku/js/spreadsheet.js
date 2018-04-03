@@ -1541,12 +1541,13 @@
             myData = hot.getData();
 
         $.ajax({
-            //url: './download-xlsx.aspx.vb/Vendor',
-            url: './register-new-sku.aspx/Vendor',
+            url: './download-xlsx.aspx',
+            //url: './register-new-sku.aspx',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
-            data: '{vendor:' + JSON.stringify(myData) + '}',
+            //data: '{vendor:' + JSON.stringify(myData) + '}',
+            data: myData,
             async: true,
             processData: false,
             cache: false,

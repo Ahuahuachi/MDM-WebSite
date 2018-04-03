@@ -2,18 +2,20 @@
 
 <%
 
-    'Dim jsonConvert As Newtonsoft.Json.JsonConvert
-    'Response.Expires = -1
+'Dim jsonConvert As Newtonsoft.Json.JsonConvert
+'Response.Expires = -1
 
 
-    Dim req
-    'Request.Form.AllKeys.ToString
-    'req = Newtonsoft.Json."{}"
-    Request.ContentType = "application/json"
+'Dim req
+''Request.Form.AllKeys.ToString
+''req = Newtonsoft.Json."{}"
+'Request.ContentType = "application/json"
 
-    req = Newtonsoft.Json.JsonConvert.SerializeObject(Request.Form(0))
+''req = Newtonsoft.Json.JsonConvert.SerializeObject(Request.Form(0))
 
-    Response.ContentType = "application/json"
-    Response.Write(req)
+'Response.ContentType = "application/json"
+'Response.Write(req)
+
+
 
 %>
