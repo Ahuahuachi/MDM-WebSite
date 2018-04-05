@@ -107,6 +107,7 @@
         data = [
             {
                 colVendor: 'Select vendor',
+                colFamily: 'Select vendor first',
                 sku: '',
                 itemDescription: '',
                 invoiceDescr: '',
@@ -129,7 +130,7 @@
         settings = {
             data: data,
             rowHeaders: true,
-            colHeaders: ["Vendor", "SKU", "Description", "Invoice<br>Description", "List Price<br>(USD)", "Type of Item", "Group or Subtype", "Standard Purchase Discount", "Sales Factor", "Regions", "Argentina's<br>Fiscal<br>Classification", "Brazil's<br>Fiscal<br>Classification", "Chile's<br>Fiscal<br>Classification", "Origin<br>(BR Only)", "ECCN", "CCATS", "License<br>Designation"],
+            colHeaders: ["Vendor", "Family", "SKU", "Description", "Invoice<br>Description", "List Price<br>(USD)", "Type of Item", "Group or Subtype", "Standard Purchase Discount", "Sales Factor", "Regions", "Argentina's<br>Fiscal<br>Classification", "Brazil's<br>Fiscal<br>Classification", "Chile's<br>Fiscal<br>Classification", "Origin<br>(BR Only)", "ECCN", "CCATS", "License<br>Designation"],
             contextMenu: ['row_above', 'row_below', 'remove_row']
         };
 
@@ -155,12 +156,13 @@
     }
 
     function getVendorInfo(colVendor) {
-        var vendorInfo = { cellValue: 'Select a Code', codVendor: '', codParteDesconto: '', codFator: '' };
+        var vendorInfo = { cellValue: 'Select a Code', codVendor: '', codParteFamilia: '', codParteDesconto: '', codFator: '' };
 
         switch (colVendor) {
             case 'Acme Packet':
                 with (vendorInfo) {
                     codVendor = 'ACMEPKT';
+                    codParteFamilia = 'ACMEPKT';
                     codParteDesconto = ['ACME', 'ACME-SVC'];
                     codFator = ['AB-HW', 'AC-SW', 'HP-BR-HW'];
                 }
@@ -168,6 +170,7 @@
             case 'Aerohive':
                 with (vendorInfo) {
                     codVendor = 'AEROHIVE';
+                    codParteFamilia = 'AEROHIVE';
                     codParteDesconto = ['AE-AP', 'AE-PR', 'WG-30', 'WG-70'];
                     codFator = ['AE-AC', 'AE-AP', 'AE-DEMO', 'AE-HW', 'AE-HW1', 'AE-SVC', 'AE-SW'];
                 }
@@ -175,6 +178,7 @@
             case 'Aladdin':
                 with (vendorInfo) {
                     codVendor = 'ALADDIN';
+                    codParteFamilia = 'ALADDIN';
                     codParteDesconto = ['AL-A', 'AL-B', 'AL-C', 'AL-HASP', 'AL-HASP-SW'];
                     codFator = ['HASP-HW', 'HASP-SW', 'J', 'Z'];
                 }
@@ -182,6 +186,7 @@
             case 'Alien Vault':
                 with (vendorInfo) {
                     codVendor = 'ALIEN VAULT';
+                    codParteFamilia = 'ALIEN VAULT';
                     codParteDesconto = ['ALV', 'ALV-HW'];
                     codFator = ['ALV-HW', 'ALV-HW-14', 'ALV-SVC', 'ALV-SW'];
                 }
@@ -189,12 +194,14 @@
             case 'Arbor Network':
                 with (vendorInfo) {
                     codVendor = 'ARBOR';
+                    codParteFamilia = 'ARBOR';
                     codParteDesconto = ['AB-AIF', 'AB-PRD'];
                     codFator = ['AB-HW', 'AB-SVC', 'AB-SW'];
                 }
                 break;
             case 'Arcsight':
                 with (vendorInfo) {
+                    codVendor = 'ARCSIGHT';
                     codVendor = 'ARCSIGHT';
                     codParteDesconto = ['AS-HW2', 'AS-SW'];
                     codFator = ['AS-HW', 'AS-SRV', 'AS-SW'];
@@ -216,19 +223,21 @@
                 break;
             case 'Avaya':
                 with (vendorInfo) {
-                    codVendor = 'AUDIOCODES';
+                    codVendor = 'AVAYA';
                     codParteDesconto = ['WG-40'];
                     codFator = ['AUDCHW12', 'AUDCHW14', 'AUDCHW16', 'AUDCHW18', 'AUDCHW20', 'AUDCHW8', 'AUDCSRV', 'AUDCSW'];
                 }
                 break;
             case 'Barracuda':
                 with (vendorInfo) {
+                    codVendor = 'BARRACUDA';
                     codParteDesconto = ['BR-1', 'BR-2', 'WG-0', 'WG-10'];
                     codFator = ['BAR-BE', 'BAR-CX', 'BAR-LOSS', 'BAR-SW'];
                 }
                 break;
             case 'BeyondTrust':
                 with (vendorInfo) {
+                    codVendor = 'BEYONDTRUST';
                     codParteDesconto = ['BT-HW', 'BT-MNT', 'BT-SVC', 'BT-SW'];
                     codFator = ['BT-HW', 'BT-SVC', 'BT-SW'];
                 }
@@ -821,6 +830,8 @@
                 }
         }
 
+        vendorInfo.codParteFamilia = [vendorInfo.codVendor, 'Westcon Services'];
+
         return vendorInfo
     }
 
@@ -1389,8 +1400,8 @@
 
             var myTypeInfo = getTypeInfo(newValue),
                 mySrcVendorInfo = getVendorInfo(newValue),
-                myType = hot.getDataAtCell(row, 5),
-                myRegion = hot.getDataAtCell(row, 9),
+                myType = hot.getDataAtCell(row, 6),
+                myRegion = hot.getDataAtCell(row, 10),
                 mySettingsCFiscal = getCFiscalProp(myType, myRegion),
                 myOrigin = getOriginProp(myRegion);
 
@@ -1400,21 +1411,20 @@
                 case 'colType':
                     with (hot) {
                         setDataAtRowProp(row, 'colGroup', myTypeInfo.groupProp.value);
-                        setCellMeta(row, 6, 'source', myTypeInfo.groupProp.source);
-                        setCellMeta(row, 6, 'readOnly', myTypeInfo.groupProp.readOnly);
-
+                        setCellMeta(row, 7, 'source', myTypeInfo.groupProp.source);
+                        setCellMeta(row, 7, 'readOnly', myTypeInfo.groupProp.readOnly);
 
                         setDataAtRowProp(row, 'colCFiscalAR', mySettingsCFiscal.CFiscalAR.value);
-                        setCellMeta(row, 10, 'source', mySettingsCFiscal.CFiscalAR.source);
-                        setCellMeta(row, 10, 'readOnly', mySettingsCFiscal.CFiscalAR.readOnly);
+                        setCellMeta(row, 11, 'source', mySettingsCFiscal.CFiscalAR.source);
+                        setCellMeta(row, 11, 'readOnly', mySettingsCFiscal.CFiscalAR.readOnly);
 
                         setDataAtRowProp(row, 'colCFiscalBR', mySettingsCFiscal.CFiscalBR.value);
-                        setCellMeta(row, 11, 'source', mySettingsCFiscal.CFiscalBR.source);
-                        setCellMeta(row, 11, 'readOnly', mySettingsCFiscal.CFiscalBR.readOnly);
+                        setCellMeta(row, 12, 'source', mySettingsCFiscal.CFiscalBR.source);
+                        setCellMeta(row, 12, 'readOnly', mySettingsCFiscal.CFiscalBR.readOnly);
 
                         setDataAtRowProp(row, 'colCFiscalCH', mySettingsCFiscal.CFiscalCH.value);
-                        setCellMeta(row, 12, 'source', mySettingsCFiscal.CFiscalCH.source);
-                        setCellMeta(row, 12, 'readOnly', mySettingsCFiscal.CFiscalCH.readOnly);
+                        setCellMeta(row, 13, 'source', mySettingsCFiscal.CFiscalCH.source);
+                        setCellMeta(row, 13, 'readOnly', mySettingsCFiscal.CFiscalCH.readOnly);
                     }
                     break;
 
@@ -1424,36 +1434,36 @@
                     with (hot) {
                         // Set options for CFiscal columns
                         setDataAtRowProp(row, 'colCFiscalAR', mySettingsCFiscal.CFiscalAR.value);
-                        setCellMeta(row, 10, 'source', mySettingsCFiscal.CFiscalAR.source);
-                        setCellMeta(row, 10, 'readOnly', mySettingsCFiscal.CFiscalAR.readOnly);
+                        setCellMeta(row, 11, 'source', mySettingsCFiscal.CFiscalAR.source);
+                        setCellMeta(row, 11, 'readOnly', mySettingsCFiscal.CFiscalAR.readOnly);
 
                         setDataAtRowProp(row, 'colCFiscalBR', mySettingsCFiscal.CFiscalBR.value);
-                        setCellMeta(row, 11, 'source', mySettingsCFiscal.CFiscalBR.source);
-                        setCellMeta(row, 11, 'readOnly', mySettingsCFiscal.CFiscalBR.readOnly);
+                        setCellMeta(row, 12, 'source', mySettingsCFiscal.CFiscalBR.source);
+                        setCellMeta(row, 12, 'readOnly', mySettingsCFiscal.CFiscalBR.readOnly);
 
                         setDataAtRowProp(row, 'colCFiscalCH', mySettingsCFiscal.CFiscalCH.value);
-                        setCellMeta(row, 12, 'source', mySettingsCFiscal.CFiscalCH.source);
-                        setCellMeta(row, 12, 'readOnly', mySettingsCFiscal.CFiscalCH.readOnly);
+                        setCellMeta(row, 13, 'source', mySettingsCFiscal.CFiscalCH.source);
+                        setCellMeta(row, 13, 'readOnly', mySettingsCFiscal.CFiscalCH.readOnly);
 
 
                         // Set options for origin column
                         setDataAtRowProp(row, 'colOrigin', myOrigin.value);
-                        setCellMeta(row, 13, 'source', myOrigin.source);
-                        setCellMeta(row, 13, 'readOnly', myOrigin.readOnly);
+                        setCellMeta(row, 14, 'source', myOrigin.source);
+                        setCellMeta(row, 14, 'readOnly', myOrigin.readOnly);
                     }
-
-
-
                     break;
 
                 case 'colVendor':
+                    // set dynamic values for Family column
+                    hot.setCellMeta(row, 1, 'source', mySrcVendorInfo.codParteFamilia)
+
                     // set dynamic values for Standard Purchase Discount column
                     hot.setDataAtRowProp(row, 'colDiscount', mySrcVendorInfo.cellValue);
-                    hot.setCellMeta(row, 7, 'source', mySrcVendorInfo.codParteDesconto);
+                    hot.setCellMeta(row, 8, 'source', mySrcVendorInfo.codParteDesconto);
 
                     // set dynamic values for Sales Factor column
                     hot.setDataAtRowProp(row, 'colSalesFactor', mySrcVendorInfo.cellValue);
-                    hot.setCellMeta(row, 8, 'source', mySrcVendorInfo.codFator);
+                    hot.setCellMeta(row, 9, 'source', mySrcVendorInfo.codFator);
                     break;
             }
 
@@ -1471,7 +1481,11 @@
                         cellProp.source = vendorList;
                         break;
 
-                    case 4:
+                    case 1:
+                        cellProp.type = 'dropdown';
+                        break;
+
+                    case 5:
                         cellProp.type = 'numeric';
                         cellProp.numericFormat = {
                             pattern: '$0,0.00',
@@ -1479,13 +1493,9 @@
                         };
                         break;
 
-                    case 5:
-                        cellProp.type = 'dropdown';
-                        cellProp.source = ['Hardware', 'Service', 'Software']
-                        break;
-
                     case 6:
                         cellProp.type = 'dropdown';
+                        cellProp.source = ['Hardware', 'Service', 'Software']
                         break;
 
                     case 7:
@@ -1498,11 +1508,11 @@
 
                     case 9:
                         cellProp.type = 'dropdown';
-                        cellProp.source = ['Argentina', 'Brazil', 'CALA/CCA', 'Chile', 'Colombia', 'Ecuador', 'Mexico', 'Peru'];
                         break;
 
                     case 10:
                         cellProp.type = 'dropdown';
+                        cellProp.source = ['Argentina', 'Brazil', 'CALA/CCA', 'Chile', 'Colombia', 'Ecuador', 'Mexico', 'Peru'];
                         break;
 
                     case 11:
@@ -1517,7 +1527,11 @@
                         cellProp.type = 'dropdown';
                         break;
 
-                    case 16:
+                    case 14:
+                        cellProp.type = 'dropdown';
+                        break;
+
+                    case 17:
                         cellProp.type = 'dropdown';
                         cellProp.source = ['Restricted', 'Unrestricted', 'No License Required'];
                         break;
