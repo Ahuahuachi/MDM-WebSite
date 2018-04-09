@@ -120,6 +120,7 @@
                 colCFiscalAR: '',
                 colCFiscalBR: '',
                 colCFiscalCH: '',
+                //colCFiscalCO: '', // Disabled for now
                 colOrigin: '',
                 colECCN: '',
                 colCCATS: '',
@@ -1552,16 +1553,36 @@
             //btnSubmit = $$('btnSubmit'),
             //exampleConsole = $$('exampleConsole'),
             //myData = JSON.stringify(hot.getData());
-            myData = hot.getData();
+            myData = [
+                vendorName = hot.getDataAtProp('colVendor'),
+                familyName = hot.getDataAtProp('colFamily'),
+                partNumber = hot.getDataAtProp('sku'),
+                itemDescription = hot.getDataAtProp('itemDescription'),
+                invoiceDescription = hot.getDataAtProp('invoiceDescr'),
+                listPrice = hot.getDataAtProp('price'),
+                itemType = hot.getDataAtProp('colType'),
+                itemGroup = hot.getDataAtProp('colGroup'),
+                purchaseDiscount = hot.getDataAtProp('colDiscount'),
+                salesFactor = hot.getDataAtProp('colSalesFactor'),
+                region = hot.getDataAtProp('colRegion'),
+                cFiscalAR = hot.getDataAtProp('colCFiscalAR'),
+                cFiscalBR = hot.getDataAtProp('colCFiscalBR'),
+                cFiscalCH = hot.getDataAtProp('colCFiscalCH'),
+                //cFiscalCO = hot.getDataAtProp('colCFsicalCO'), // Disabled for now
+                origin = hot.getDataAtProp('colOrigin'),
+                eccn = hot.getDataAtProp('colECCN'),
+                ccats = hot.getDataAtProp('colCCATS'),
+                licenseDesignation = hot.getDataAtProp('colLicDes')
+            ];
 
         $.ajax({
-            url: './download-xlsx.aspx',
-            //url: './register-new-sku.aspx',
+            url: './register-new-sku.aspx/GetData',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             //data: '{vendor:' + JSON.stringify(myData) + '}',
-            data: myData,
+            //data: JSON.stringify(myData),
+            data: '{mydata:' + JSON.stringify(myData) + '}',
             async: true,
             processData: false,
             cache: false,
