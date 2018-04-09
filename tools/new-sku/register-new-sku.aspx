@@ -2,6 +2,9 @@
 
 <asp:Content ID="headContent" ContentPlaceHolderID="specificHeadContent" runat="server">
     <script src="/Scripts/handsontable/handsontable.full.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+   <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+    
     <link href="/Content/handsontable/handsontable.full.css" rel="stylesheet" />
 </asp:Content>
 
@@ -27,17 +30,21 @@
         <%--<asp:LinkButton ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" CssClass="">
             <i class="fa fa-download"></i>&nbsp;Submit
         </asp:LinkButton>--%>
-        <div class="">
+       <div class="">
             <div id="btnSubmit" class="btn btn-primary">
                 <div><i class="fa fa-download"></i>&nbsp;Submit</div>
             </div>
         </div>
-        <pre id="exampleConsole"></pre>
+             <input type="button" id = "btnCity" value="Get City" /><br />
+       <!-- <pre id="exampleConsole"></pre>-->
         <% Response.Write(Now()) %>
     </form>
 
 
     <script src="js/spreadsheet.js" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+   <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+ 
 
 </asp:Content>
 
