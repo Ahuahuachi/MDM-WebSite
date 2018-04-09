@@ -1553,27 +1553,27 @@
             //btnSubmit = $$('btnSubmit'),
             //exampleConsole = $$('exampleConsole'),
             //myData = JSON.stringify(hot.getData());
-            myData = [
-                vendorName = hot.getDataAtProp('colVendor'),
-                familyName = hot.getDataAtProp('colFamily'),
-                partNumber = hot.getDataAtProp('sku'),
-                itemDescription = hot.getDataAtProp('itemDescription'),
-                invoiceDescription = hot.getDataAtProp('invoiceDescr'),
-                listPrice = hot.getDataAtProp('price'),
-                itemType = hot.getDataAtProp('colType'),
-                itemGroup = hot.getDataAtProp('colGroup'),
-                purchaseDiscount = hot.getDataAtProp('colDiscount'),
-                salesFactor = hot.getDataAtProp('colSalesFactor'),
-                region = hot.getDataAtProp('colRegion'),
-                cFiscalAR = hot.getDataAtProp('colCFiscalAR'),
-                cFiscalBR = hot.getDataAtProp('colCFiscalBR'),
-                cFiscalCH = hot.getDataAtProp('colCFiscalCH'),
-                //cFiscalCO = hot.getDataAtProp('colCFsicalCO'), // Disabled for now
-                origin = hot.getDataAtProp('colOrigin'),
-                eccn = hot.getDataAtProp('colECCN'),
-                ccats = hot.getDataAtProp('colCCATS'),
-                licenseDesignation = hot.getDataAtProp('colLicDes')
-            ];
+            myData = {};
+
+        myData.vendorName = hot.getDataAtProp('colVendor');
+        myData.familyName = hot.getDataAtProp('colFamily');
+        myData.partNumber = hot.getDataAtProp('sku');
+        myData.itemDescription = hot.getDataAtProp('itemDescription');
+        myData.invoiceDescription = hot.getDataAtProp('invoiceDescr');
+        myData.listPrice = hot.getDataAtProp('price');
+        myData.itemType = hot.getDataAtProp('colType');
+        myData.itemGroup = hot.getDataAtProp('colGroup');
+        myData.purchaseDiscount = hot.getDataAtProp('colDiscount');
+        myData.salesFactor = hot.getDataAtProp('colSalesFactor');
+        myData.region = hot.getDataAtProp('colRegion');
+        myData.cFiscalAR = hot.getDataAtProp('colCFiscalAR');
+        myData.cFiscalBR = hot.getDataAtProp('colCFiscalBR');
+        myData.cFiscalCH = hot.getDataAtProp('colCFiscalCH');
+        //myData.cFiscalCO = hot.getDataAtProp('colCFsicalCO'), // Disabled for now
+        myData.origin = hot.getDataAtProp('colOrigin');
+        myData.eccn = hot.getDataAtProp('colECCN');
+        myData.ccats = hot.getDataAtProp('colCCATS');
+        myData.licenseDesignation = hot.getDataAtProp('colLicDes');
 
         $.ajax({
             url: './register-new-sku.aspx/GetData',
