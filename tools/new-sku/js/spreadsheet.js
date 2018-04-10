@@ -1588,11 +1588,11 @@
             cache: false,
             success: function (res) {
 
-                exampleConsole.innerHTML = 'Success! <br /> Response: ' + res + '<br /> Data sent: ' + myData;
+                exampleConsole.innerHTML = 'Success! <br /> Response: ' + res.d; //'<br /> Data sent: ' + myData;
                 console.log('Response:');
-                console.log(res)
-                console.log('Data sent:');
-                console.log(myData);
+                console.log(res.d)
+                //console.log('Data sent:');
+                //console.log(myData);
             },
             error: function (xhr) {
                 if (xhr.status == 200) {
