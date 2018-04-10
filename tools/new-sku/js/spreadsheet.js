@@ -1576,7 +1576,7 @@
         myData.licenseDesignation = hot.getDataAtProp('colLicDes');
 
         $.ajax({
-            url: './register-new-sku.aspx/GetData',
+            url: './register-new-sku2.aspx/GetData',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
@@ -1588,7 +1588,7 @@
             cache: false,
             success: function (res) {
 
-                exampleConsole.innerHTML = 'Success! <br /> Response: ' + res.d; //'<br /> Data sent: ' + myData;
+                exampleConsole.innerHTML = 'Success! <br /> Response: ' + JSON.stringify(res.d); //'<br /> Data sent: ' + myData;
                 console.log('Response:');
                 console.log(res.d)
                 //console.log('Data sent:');
