@@ -1620,7 +1620,7 @@
         myData.cFiscalAR = hot.getDataAtProp('colCFiscalAR');
         myData.cFiscalBR = hot.getDataAtProp('colCFiscalBR');
         myData.cFiscalCH = hot.getDataAtProp('colCFiscalCH');
-        myData.cFiscalCO = hot.getDataAtProp('colCFsicalCO'),
+        myData.cFiscalCO = hot.getDataAtProp('colCFiscalCO');
         myData.origin = hot.getDataAtProp('colOrigin');
         myData.eccn = hot.getDataAtProp('colECCN');
         myData.ccats = hot.getDataAtProp('colCCATS');
