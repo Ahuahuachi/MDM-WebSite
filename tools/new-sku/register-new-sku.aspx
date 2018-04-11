@@ -10,7 +10,7 @@
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="Server">
     <div class="jumbotron">
-        <h1>New part number registration</h1>
+        <h1>New part number registration <span class="alert-danger">(Deprecated)</span></h1>
         <p class="lead">This tool is intended to help the Product Managers make a request to register part numbers that are not in the ERP (Intranet/Starsoft Applications) databases. Please read carefully the instructions below before making a request.</p>
         <%--<p class="lead">Please fill the spreadsheet below with the required information of each part number.</p>--%>
     </div>
