@@ -117,10 +117,10 @@
                 colDiscount: 'Select vendor first',
                 colSalesFactor: 'Select vendor first',
                 colRegion: 'Select region',
-                colCFiscalAR: '',
-                colCFiscalBR: '',
-                colCFiscalCH: '',
-                //colCFiscalCO: '', // Disabled for now
+                colCFiscalAR: 'Select type and region',
+                colCFiscalBR: 'Select type and region',
+                colCFiscalCH: 'Select type and region',
+                colCFiscalCO: 'Select type and region',
                 colOrigin: '',
                 colECCN: '',
                 colCCATS: '',
@@ -131,7 +131,7 @@
         settings = {
             data: data,
             rowHeaders: true,
-            colHeaders: ["Vendor", "Family", "SKU", "Description", "Invoice<br>Description", "List Price<br>(USD)", "Type of Item", "Group or Subtype", "Standard Purchase Discount", "Sales Factor", "Regions", "Argentina's<br>Fiscal<br>Classification", "Brazil's<br>Fiscal<br>Classification", "Chile's<br>Fiscal<br>Classification", "Origin<br>(BR Only)", "ECCN", "CCATS", "License<br>Designation"],
+            colHeaders: ["Vendor", "Family", "SKU", "Description", "Invoice<br>Description", "List Price<br>(USD)", "Type of Item", "Group or Subtype", "Standard Purchase Discount", "Sales Factor", "Regions", "Argentina's<br>Fiscal<br>Classification", "Brazil's<br>Fiscal<br>Classification", "Chile's<br>Fiscal<br>Classification", "Colombia's<br>Fiscal<br>Classification","Origin<br>(BR Only)", "ECCN", "CCATS", "License<br>Designation"],
             contextMenu: ['row_above', 'row_below', 'remove_row']
         };
 
@@ -841,7 +841,8 @@
         var cfiscalProp = {
             CFiscalAR: { readOnly: true, value: 'Select type and region', source: ['Select type and region'] },
             CFiscalBR: { readOnly: true, value: 'Select type and region', source: ['Select type and region'] },
-            CFiscalCH: { readOnly: true, value: 'Select type and region', source: ['Select type and region'] }
+            CFiscalCH: { readOnly: true, value: 'Select type and region', source: ['Select type and region'] },
+            CFiscalCO: { readOnly: true, value: 'Select type and region', source: ['Select type and region'] }
         };
 
         switch (region) {
@@ -883,6 +884,7 @@
 
                     cfiscalProp.CFiscalBR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalCH = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
 
                 } else if (type == 'Service' || type == 'Software') {
                     cfiscalProp.CFiscalAR.source = [
@@ -893,10 +895,13 @@
                     ];
                     cfiscalProp.CFiscalBR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalCH = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
+
                 } else {
                     cfiscalProp.CFiscalAR = { readOnly: false, value: 'Selct type and region', source: [''] };
                     cfiscalProp.CFiscalBR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalCH = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
                 }
 
                 break;
@@ -1306,6 +1311,8 @@
 
                     cfiscalProp.CFiscalAR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalCH = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
+
                 } else if (type == 'Service' || type == 'Software') {
                     cfiscalProp.CFiscalBR.source = [
                         'IAC : INTANGÍVEL - ASSESSORIA E CONSULTORIA',
@@ -1318,10 +1325,13 @@
 
                     cfiscalProp.CFiscalAR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalCH = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
+
                 } else {
                     cfiscalProp.CFiscalAR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalBR = { readOnly: false, value: 'Selct type and region', source: [''] };
                     cfiscalProp.CFiscalCH = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
                 }
 
                 break;
@@ -1340,6 +1350,7 @@
 
                     cfiscalProp.CFiscalAR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalBR = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
 
                 } else if (type == 'Service' || type == 'Software') {
 
@@ -1348,12 +1359,44 @@
 
                     cfiscalProp.CFiscalAR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalBR = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
 
                 } else {
+
                     cfiscalProp.CFiscalAR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalBR = { readOnly: true, value: 'Not required', source: ['Not required'] };
                     cfiscalProp.CFiscalCH = { readOnly: false, value: 'Selct type and region', source: [''] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
+
                 }
+                break;
+
+            case 'Colombia':
+
+                cfiscalProp.CFiscalCO.readOnly = false;
+                cfiscalProp.CFiscalCO.value = 'Select a fiscal code';
+
+                if (type == 'Hardware') {
+
+                    cfiscalProp.CFiscalAR = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalBR = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCH = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCO = { readOnly: true, value: 'Not required', source: ['Not required'] };
+
+                } else if (type == 'Service' || type == 'Software') {
+
+                    cfiscalProp.CFiscalCO.source = [
+                        'I01 : INTANGIBLES GRAVADOS DE IVA',
+                        'I02 : INTANGIBLES EXENTOS DE IVA',
+                        'I99 : ITEMS INTANGIBLES NO CLASIFICADOS'
+                    ];
+
+                    cfiscalProp.CFiscalAR = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalBR = { readOnly: true, value: 'Not required', source: ['Not required'] };
+                    cfiscalProp.CFiscalCH = { readOnly: true, value: 'Not required', source: ['Not required'] };
+
+                }
+
                 break;
         }
 
@@ -1426,6 +1469,10 @@
                         setDataAtRowProp(row, 'colCFiscalCH', mySettingsCFiscal.CFiscalCH.value);
                         setCellMeta(row, 13, 'source', mySettingsCFiscal.CFiscalCH.source);
                         setCellMeta(row, 13, 'readOnly', mySettingsCFiscal.CFiscalCH.readOnly);
+
+                        setDataAtRowProp(row, 'colCFiscalCO', mySettingsCFiscal.CFiscalCO.value);
+                        setCellMeta(row, 14, 'source', mySettingsCFiscal.CFiscalCO.source);
+                        setCellMeta(row, 14, 'readOnly', mySettingsCFiscal.CFiscalCO.readOnly);
                     }
                     break;
 
@@ -1446,11 +1493,15 @@
                         setCellMeta(row, 13, 'source', mySettingsCFiscal.CFiscalCH.source);
                         setCellMeta(row, 13, 'readOnly', mySettingsCFiscal.CFiscalCH.readOnly);
 
+                        setDataAtRowProp(row, 'colCFiscalCO', mySettingsCFiscal.CFiscalCO.value);
+                        setCellMeta(row, 14, 'source', mySettingsCFiscal.CFiscalCO.source);
+                        setCellMeta(row, 14, 'readOnly', mySettingsCFiscal.CFiscalCO.readOnly);
+
 
                         // Set options for origin column
                         setDataAtRowProp(row, 'colOrigin', myOrigin.value);
-                        setCellMeta(row, 14, 'source', myOrigin.source);
-                        setCellMeta(row, 14, 'readOnly', myOrigin.readOnly);
+                        setCellMeta(row, 15, 'source', myOrigin.source);
+                        setCellMeta(row, 15, 'readOnly', myOrigin.readOnly);
                     }
                     break;
 
@@ -1569,7 +1620,7 @@
         myData.cFiscalAR = hot.getDataAtProp('colCFiscalAR');
         myData.cFiscalBR = hot.getDataAtProp('colCFiscalBR');
         myData.cFiscalCH = hot.getDataAtProp('colCFiscalCH');
-        //myData.cFiscalCO = hot.getDataAtProp('colCFsicalCO'), // Disabled for now
+        myData.cFiscalCO = hot.getDataAtProp('colCFsicalCO'),
         myData.origin = hot.getDataAtProp('colOrigin');
         myData.eccn = hot.getDataAtProp('colECCN');
         myData.ccats = hot.getDataAtProp('colCCATS');
