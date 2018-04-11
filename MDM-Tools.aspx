@@ -13,7 +13,7 @@
             <div class="col-md-4">
                 <h2>New part number registration</h2>
                 <p>Use this form to make a request to register a new part number into Intranet2</p>
-                <p><a runat="server" class="btn btn-secondary" href="~/tools/new-sku/register-new-sku.aspx">Go <span class="fa fa-arrow-right"></span></a></p>
+                <p><a runat="server" class="btn btn-secondary" href="~/tools/new-sku/register-new-sku2.aspx">Go <span class="fa fa-arrow-right"></span></a></p>
             </div>
         </div>
     </div>

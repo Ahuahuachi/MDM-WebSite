@@ -21,12 +21,12 @@
             <div class="col-md-4">
                 <h2>Commercial Team Tools</h2>
                 <p>In this area you will find tools developed for Product Managers or Account Managers.</p>
-                <p><a runat="server" class="btn btn-secondary" href="#">Go <span class="fa fa-arrow-right" /></a></p>
+                <p><a runat="server" class="btn btn-secondary" href="~/commercial-tools.aspx">Go <span class="fa fa-arrow-right" /></a></p>
             </div>
             <div class="col-md-4">
                 <h2>Operations Area Tools</h2>
                 <p>In this area you will find tools developed for Operations Personnel</p>
-                <p><a runat="server" class="btn btn-secondary" href="#">Go <span class="fa fa-arrow-right" /></a></p>
+                <p><a runat="server" class="btn btn-secondary" href="~/operations-tools.aspx">Go <span class="fa fa-arrow-right" /></a></p>
             </div>
         </div>
     </div>
