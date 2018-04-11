@@ -35,7 +35,7 @@
                 <div><i class="fa fa-download"></i>&nbsp;Submit</div>
             </div>
         </div>
-       <!-- <pre id="exampleConsole"></pre>-->
+        <pre id="exampleConsole"></pre>
     </form>
 
 

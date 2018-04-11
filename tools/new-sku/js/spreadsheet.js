@@ -1620,14 +1620,14 @@
         myData.cFiscalAR = hot.getDataAtProp('colCFiscalAR');
         myData.cFiscalBR = hot.getDataAtProp('colCFiscalBR');
         myData.cFiscalCH = hot.getDataAtProp('colCFiscalCH');
-        myData.cFiscalCO = hot.getDataAtProp('colCFsicalCO'),
+        myData.cFiscalCO = hot.getDataAtProp('colCFiscalCO');
         myData.origin = hot.getDataAtProp('colOrigin');
         myData.eccn = hot.getDataAtProp('colECCN');
         myData.ccats = hot.getDataAtProp('colCCATS');
         myData.licenseDesignation = hot.getDataAtProp('colLicDes');
 
         $.ajax({
-            url: './register-new-sku2.aspx/GetData',
+           url: './register-new-sku2.aspx/GetData',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
@@ -1640,7 +1640,7 @@
             success: function (res) {
 
                 exampleConsole.innerHTML = 'Success! <br /> Response: ' + JSON.stringify(res.d); //'<br /> Data sent: ' + myData;
-                console.log('Response:');
+                console.log('Response: <br>');
                 console.log(res.d)
                 //console.log('Data sent:');
                 //console.log(myData);
