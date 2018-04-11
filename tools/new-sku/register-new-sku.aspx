@@ -35,7 +35,6 @@
                 <div><i class="fa fa-download"></i>&nbsp;Submit</div>
             </div>
         </div>
-             <input type="button" id = "btnCity" value="Get City" /><br />
        <!-- <pre id="exampleConsole"></pre>-->
         <% Response.Write(Now()) %>
     </form>
