@@ -3,29 +3,12 @@ using System;
 using System.Web;
 using System.Windows.Forms;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
-using System.Web.UI.HtmlControls;
-using System.Data;
-using System.Configuration;
 using System.IO;
 using System.Reflection;
-using ClosedXML.Excel;
-using System.Runtime.InteropServices;
-using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OfficeOpenXml;
-using System.Threading.Tasks;
-using System.Web.Script.Serialization;
-using Microsoft.VisualBasic;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.Dynamic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.ServiceModel;
-using System.Data.SqlClient;
 /*using Newtonsoft.Json.Linq.JArray;
 using Newtonsoft.Json.JsonConvert;*/
 /* DocumentFormat.OpenXml;
@@ -60,7 +43,7 @@ namespace testsl.Web
         {
             // var producto= GetData();
           ///SpreadSheet j = new SpreadSheet();
-       /*    ExcelPackage excel = new ExcelPackage();
+             ExcelPackage excel = new ExcelPackage();
             var workSheet = excel.Workbook.Worksheets.Add("Lista de Precios");
             var totalCols = 6;
             var totalRows = 6;
@@ -87,16 +70,16 @@ namespace testsl.Web
                 memoryStream.WriteTo(Response.OutputStream);
                 Response.Flush();
                 Response.End();
-            }*/
+            }
         }
         [System.Web.Services.WebMethod]
-        public List<String> GetData(SpreadSheet mydata)
+        public void GetData(SpreadSheet mydata)
         {
             ExcelPackage excel = new ExcelPackage();
             var workSheet = excel.Workbook.Worksheets.Add("Lista de Precios");
             var totalCols = 6;
             var totalRows = 6;
-            workSheet.Cells[1, 1].Value = "VendorNAme";
+            workSheet.Cells[1, 1].Value = mydata.listprice;
             workSheet.Cells[1, 2].Value = "FamilyName";
             workSheet.Cells[1, 3].Value = "FamilyName";
             workSheet.Cells[1, 4].Value = "VendorName";
@@ -120,7 +103,6 @@ namespace testsl.Web
                 Response.Flush();
                 Response.End();
             }
-            return excel;
         }
 
     }
