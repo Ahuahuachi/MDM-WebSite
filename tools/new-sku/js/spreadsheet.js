@@ -1521,6 +1521,7 @@
 
             hot.render();
         }
+
     });
 
     setTimeout(function () {
