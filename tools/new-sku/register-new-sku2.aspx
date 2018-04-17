@@ -1,4 +1,4 @@
-﻿<%@ Page Title="New Part Number Registration" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="register-new-sku2.aspx.cs" Inherits="tools_new_sku_register_new_sku2" %>
+﻿<%@ Page Title="New Part Number Registration" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="register-new-sku2.aspx.cs" Inherits="testsl.Web.tools_new_sku_register_new_sku2" %>
 
 <asp:Content ID="headContent" ContentPlaceHolderID="specificHeadContent" runat="server">
     <script src="/Scripts/handsontable/handsontable.full.js" type="text/javascript"></script>
@@ -34,7 +34,23 @@
             <div id="btnSubmit" class="btn btn-primary">
                 <div><i class="fa fa-download"></i>&nbsp;Submit</div>
             </div>
+
+           <div id="getExcel" class="btn btn-primary">
+                <div><i class="fa fa-download"></i>&nbsp;Excel</div>
+            </div>
         </div>
+        <asp:DataGrid runat="server" id="grd"></asp:DataGrid>
+       <input id="Button1" text="Submit" type="submit" onclick="SubmitBtn_Click" usesubmitbehavior="false" runat="server"/> 
+
+
+        <div>
+        <asp:GridView id="GridView1" runat="server" AutoGenerateColumns="true"></asp:GridView>
+    </div>
+        <asp:Button id="Button2" runat="server" Text="Exportar" onclick="Button1_Click" />
+
+    <br /><br /> 
+
+    <label id="Message" runat="server"/>
         <pre id="exampleConsole"></pre>
     </form>
 
